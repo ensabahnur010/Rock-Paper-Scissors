@@ -11,7 +11,7 @@ function getComputerChoice() {
     return "Scissors";
   }
 }
-
+//function to get computer choice
 //alert (getComputerChoice ());
 
 function capitalize(string) {
@@ -22,5 +22,9 @@ function getHumanChoice() {
     let humanChoice = prompt ("Rock,Paper or Scissors?");
     return capitalize(humanChoice);
 }
+//function to get human choice
+//alert(getHumanChoice());
 
-alert(getHumanChoice());
+
+let humanScore = 0;
+let computerScore = 0;
