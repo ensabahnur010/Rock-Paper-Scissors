@@ -21,6 +21,7 @@ function capitalize(string) {
 
 function getHumanChoice() {
     let humanChoice = prompt ("Rock,Paper or Scissors?");
+    if (humanChoice === null) return "";
     return capitalize(humanChoice);
 }
 //function to get human choice
@@ -28,8 +29,7 @@ function getHumanChoice() {
 
 
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
+
 
 
 
@@ -68,28 +68,26 @@ function playRound(humanChoice,computerChoice) {
 //play a single round
 
 
-function playGame (rounds) {
-  let humanScore = 0;
-  let computerScore = 0;
-  let roundResult = playRound(humanChoice,computerChoice);
-  round++;
-
-  if (rounds >= 0) {
-    if (roundResult === "Computer wins") {
-      computerScore++;
-      rounds--;
-    } else {
-      if (roundResult === "Human wins") {
-        humanScore++;
-        rounds--;
-      } else {
-      }
-    }
-  } else {
-    GAME OVER!
+function playGame(rounds, humanScore = 0, computerScore = 0) {
+  if (rounds <= 0) {
+    return `Game over! Human: ${humanScore}, Computer: ${computerScore}`;
   }
 
+  const humanChoice = getHumanChoice();
+  const computerChoice = getComputerChoice();
+  const roundResult = playRound(humanChoice, computerChoice);
+
+  console.log(roundResult);
+
+  if (roundResult === "Human wins") {
+    humanScore++;
+  } else if (roundResult === "Computer wins") {
+    computerScore++;
+  }
+
+  return playGame(rounds - 1, humanScore, computerScore);
 }
+//play game X number of times
 
 alert(playGame(5));
 
